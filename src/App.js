@@ -1,9 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import Home from "./components/Home";
+import ProductList from "./components/ProductList";
+import ProductListItem from "./components/ProductListItem";
+import Error from "./components/Error";
 
-class App extends Component {
-  render() {
-    return <div />;
-  }
-}
+// app main
+const App = () => (
+  <main>
+    <Switch>
+      {/* <Route exact path="/" component={Home} /> */}
+      <Route exact path="/" component={ProductList} />
+      {/* <Route exact path="/products/" component={ProductList} /> */}
+      {/* <Route path="/products/:item" component={ProductListItem} /> */}
+      <Route component={Error} />
+    </Switch>
+  </main>
+);
 
 export default App;
