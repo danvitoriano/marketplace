@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./styles/card.css";
+import ProductItem from "./ProductItem";
 
 class ProductListContainer extends React.Component {
   state = { data: [] };
@@ -17,18 +18,7 @@ class ProductListContainer extends React.Component {
 var ProductList = props => (
   <div className="row">
     {props.data.map(c => (
-      <div className="column">
-        <div className="card">
-          <img src={c.photo} alt={c.name} />
-          <div className="container">
-            <h4>
-              {c.product_id} — <b>{c.name}</b>
-            </h4>
-            <p>{c.price}</p>
-            <a href={"/products/" + c.product_id}>Ver Detalhes</a>
-          </div>
-        </div>
-      </div>
+      <ProductItem key={c.product_id} data={c} />
     ))}
   </div>
 );

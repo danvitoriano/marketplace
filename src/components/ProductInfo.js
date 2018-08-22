@@ -7,11 +7,18 @@ function FancyBorder(props) {
   );
 }
 
-function ProductInfo() {
+function ProductInfo(props) {
   return (
     <FancyBorder color="blue">
-      <h1 className="Dialog-title">Welcome</h1>
-      <p className="Dialog-message">Thank you for visiting our spacecraft!</p>
+      <div className="container">
+        <h4>
+          {props.id} — <b>{props.name}</b>
+        </h4>
+        <p>{props.price}</p>
+        <a href={"/products/" + props.id}>
+          {props.buy ? "Comprar" : "Detalhes"}
+        </a>
+      </div>
     </FancyBorder>
   );
 }
