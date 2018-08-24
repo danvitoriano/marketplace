@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "./styles/card.css";
 import ProductItem from "./ProductItem";
 
 class ProductListContainer extends React.Component {
