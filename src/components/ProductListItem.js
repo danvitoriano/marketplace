@@ -3,18 +3,17 @@ import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import Button from "./Button";
 import pagarme from "pagarme";
+import TransactionInfo from "./TransactionInfo";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
 const api = "http://localhost:5000/api/products/";
 
-var bankAccountID = "";
-
 class ProductListContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.Transaction = this.Transaction.bind(this);
-    this.BankAccount = this.BankAccount.bind(this);
     this.Recipients = this.Recipients.bind(this);
+    this.Transaction = this.Transaction.bind(this);
+    this.Payables = this.Payables.bind(this);
     this.state = {
       data: [],
       response: "",
@@ -25,30 +24,8 @@ class ProductListContainer extends React.Component {
     };
   }
 
-  BankAccount() {
-    pagarme.client
-      .connect({ api_key: api_key_pagarme })
-      .then(client =>
-        client.bankAccounts.create({
-          bank_code: "237",
-          agencia: "1935",
-          agencia_dv: "9",
-          conta: "23398",
-          conta_dv: "9",
-          legal_name: "API BANK ACCOUNT",
-          document_number: "26268738888"
-        })
-      )
-      .then(bankAccount => console.log("bankAccount", bankAccount.id))
-      .then(bankAccount => this.setState({ bankAccount }))
-      .then(function(data) {
-        bankAccountID = data;
-        return bankAccountID;
-      });
-  }
-
   Recipients() {
-    pagarme.client
+    pagarme.client // seller
       .connect({ api_key: api_key_pagarme })
       .then(client =>
         client.recipients.create({
@@ -70,8 +47,7 @@ class ProductListContainer extends React.Component {
         })
       )
       .then(recipients => this.setState({ seller: recipients.id }));
-    // .then(recipients => console.log("recipients 1: ", recipients.id));
-    pagarme.client
+    pagarme.client // me
       .connect({ api_key: api_key_pagarme })
       .then(client =>
         client.recipients.create({
@@ -93,8 +69,7 @@ class ProductListContainer extends React.Component {
         })
       )
       .then(recipients => this.setState({ me: recipients.id }));
-    // .then(recipients => console.log("recipients 2: ", recipients.id));
-    pagarme.client
+    pagarme.client // friend
       .connect({ api_key: api_key_pagarme })
       .then(client =>
         client.recipients.create({
@@ -116,22 +91,10 @@ class ProductListContainer extends React.Component {
         })
       )
       .then(recipients => this.setState({ friend: recipients.id }));
-    // .then(recipients => console.log("recipients 3: ", recipients.id));
   }
 
   Transaction() {
-    console.log("amount: ", parseInt(this.state.data.price * 100, 10));
-    console.log("amount 60: ", parseInt(this.state.data.price * 100 * 0.6, 10));
-    console.log(
-      "amount 25: ",
-      parseInt(this.state.data.price * 100 * 0.25, 10)
-    );
-    console.log(
-      "amount 15: ",
-      parseInt(this.state.data.price * 100 * 0.15, 10)
-    );
-
-    pagarme.client
+    pagarme.client // transaction with split_rule
       .connect({ api_key: api_key_pagarme })
       .then(client =>
         client.transactions.create({
@@ -185,22 +148,19 @@ class ProductListContainer extends React.Component {
           split_rules: [
             {
               recipient_id: this.state.seller,
-              // percentage: 60,
-              amount: parseInt(this.state.data.price * 100 * 0.6, 10),
+              percentage: 60,
               liable: true,
               charge_processing_fee: true
             },
             {
               recipient_id: this.state.me,
-              // percentage: 25,
-              amount: parseInt(this.state.data.price * 100 * 0.25, 10),
+              percentage: 25,
               liable: true,
               charge_processing_fee: true
             },
             {
               recipient_id: this.state.friend,
-              // percentage: 15,
-              amount: parseInt(this.state.data.price * 100 * 0.15, 10),
+              percentage: 15,
               liable: true,
               charge_processing_fee: true
             }
@@ -216,11 +176,20 @@ class ProductListContainer extends React.Component {
           ]
         })
       )
-      .then(response => this.setState({ response: response }));
+      .then(response => this.setState({ response: response }))
+      .then(this.Payables);
+  }
+
+  Payables() {
+    var tid = this.state.response.tid;
+    console.log("this.state.response.tid: ", this.state.response.tid);
+    pagarme.client // paybables transaction return object
+      .connect({ api_key: api_key_pagarme })
+      .then(client => client.payables.find({ transactionId: tid }))
+      .then(payables => console.log("payables: ", payables));
   }
 
   componentDidMount() {
-    this.BankAccount();
     this.Recipients();
     fetch(`${api + this.props.match.params.product_id}`)
       .then(response => response.json())
@@ -230,34 +199,37 @@ class ProductListContainer extends React.Component {
   render() {
     return (
       <div>
-        <ProductItem data={this.state.data} buy />
+        <ProductItem data={this.state.data} buy />{" "}
+        {/*if buy, do not show link at card || if response is not null, show transaction:*/}
         {this.state.response !== "" ? (
           <div className="column transaction">
-            <p>
-              <strong>Transaction ID: </strong>
-              {this.state.response.tid}
-            </p>
-            <p>
-              <strong>Item: </strong>
-              {this.state.response.items[0].title}
-            </p>
-            <p>
-              <strong>Total Transação: </strong>
-              R$ {(this.state.response.amount * 0.01).toFixed(2)}
-            </p>
-            <p>
-              <strong>Vendedor: </strong>
-              R$ {(this.state.response.amount * 0.006).toFixed(2)} (60%)
-            </p>
-            <p>
-              <strong>Eu: </strong>
-              R$ {(this.state.response.amount * 0.0025).toFixed(2)} (25%)
-            </p>
-            <p>
-              <strong>Amigo: </strong>
-              R$ {(this.state.response.amount * 0.0015).toFixed(2)} (15%)
-            </p>
-            <a href="/">Voltar para Lista de Produtos</a>
+            <div className="card">
+              <TransactionInfo
+                label="Transaction ID"
+                value={this.state.response.tid}
+              />
+              <TransactionInfo
+                label="Item"
+                value={this.state.response.items[0].title}
+              />
+              <TransactionInfo
+                label="Total Transação"
+                value={(this.state.response.amount * 0.01).toFixed(2)}
+              />
+              <TransactionInfo
+                label="Vendedor"
+                value={(this.state.response.amount * 0.006).toFixed(2)}
+              />
+              <TransactionInfo
+                label="Eu"
+                value={(this.state.response.amount * 0.0025).toFixed(2)}
+              />
+              <TransactionInfo
+                label="Amigo"
+                value={(this.state.response.amount * 0.0015).toFixed(2)}
+              />
+              <a href="/">Voltar para Lista de Produtos</a>
+            </div>
           </div>
         ) : (
           <Button onClick={this.Transaction} label="Comprar" />

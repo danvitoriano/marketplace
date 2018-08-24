@@ -1,5 +1,7 @@
 # React Marketplace
 
+[Live Demo](https://marketplace-react.herokuapp.com/)
+
 **List itens on sale. Buy an item through third-party payment API**
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -55,6 +57,10 @@ heroku create $APP_NAME --buildpack https://github.com/mars/create-react-app-bui
 git push heroku master
 heroku open
 ```
+
+Live Demo:
+
+[https://marketplace-react.herokuapp.com/](https://marketplace-react.herokuapp.com/)
 
 ## Contact
 
