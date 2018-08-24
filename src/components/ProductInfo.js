@@ -3,7 +3,7 @@ function LinkWrapper(props) {
   if (!props.data.buy) {
     return <a href={"/" + props.data.id}>{props.children}</a>;
   } else {
-    return <div />;
+    return <div>{props.children}</div>;
   }
 }
 

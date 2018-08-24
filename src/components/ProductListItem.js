@@ -15,7 +15,14 @@ class ProductListContainer extends React.Component {
     this.Transaction = this.Transaction.bind(this);
     this.BankAccount = this.BankAccount.bind(this);
     this.Recipients = this.Recipients.bind(this);
-    this.state = { data: [], response: "", bankAccount: "" };
+    this.state = {
+      data: [],
+      response: "",
+      bankAccount: "",
+      seller: "",
+      me: "",
+      friend: ""
+    };
   }
 
   BankAccount() {
@@ -49,7 +56,7 @@ class ProductListContainer extends React.Component {
           transfer_interval: "weekly",
           transfer_day: 5,
           automatic_anticipation_enabled: true,
-          anticipatable_volume_percentage: 85,
+          anticipatable_volume_percentage: 60,
           bank_account: {
             bank_code: "341",
             agencia: "0932",
@@ -58,11 +65,12 @@ class ProductListContainer extends React.Component {
             type: "conta_corrente",
             conta_dv: "1",
             document_number: "26268738888",
-            legal_name: "API BANK ACCOUNT"
+            legal_name: "Old Stuff (Seller)"
           }
         })
       )
-      .then(recipients => console.log("recipients 1: ", recipients.id));
+      .then(recipients => this.setState({ seller: recipients.id }));
+    // .then(recipients => console.log("recipients 1: ", recipients.id));
     pagarme.client
       .connect({ api_key: api_key_pagarme })
       .then(client =>
@@ -71,7 +79,7 @@ class ProductListContainer extends React.Component {
           transfer_interval: "weekly",
           transfer_day: 5,
           automatic_anticipation_enabled: true,
-          anticipatable_volume_percentage: 85,
+          anticipatable_volume_percentage: 25,
           bank_account: {
             bank_code: "341",
             agencia: "0932",
@@ -80,11 +88,12 @@ class ProductListContainer extends React.Component {
             type: "conta_corrente",
             conta_dv: "1",
             document_number: "26268738888",
-            legal_name: "API BANK ACCOUNT"
+            legal_name: "Developer Number One"
           }
         })
       )
-      .then(recipients => console.log("recipients 2: ", recipients.id));
+      .then(recipients => this.setState({ me: recipients.id }));
+    // .then(recipients => console.log("recipients 2: ", recipients.id));
     pagarme.client
       .connect({ api_key: api_key_pagarme })
       .then(client =>
@@ -93,7 +102,7 @@ class ProductListContainer extends React.Component {
           transfer_interval: "weekly",
           transfer_day: 5,
           automatic_anticipation_enabled: true,
-          anticipatable_volume_percentage: 85,
+          anticipatable_volume_percentage: 15,
           bank_account: {
             bank_code: "341",
             agencia: "0932",
@@ -102,19 +111,31 @@ class ProductListContainer extends React.Component {
             type: "conta_corrente",
             conta_dv: "1",
             document_number: "26268738888",
-            legal_name: "API BANK ACCOUNT"
+            legal_name: "Developer Friendship"
           }
         })
       )
-      .then(recipients => console.log("recipients 3: ", recipients.id));
+      .then(recipients => this.setState({ friend: recipients.id }));
+    // .then(recipients => console.log("recipients 3: ", recipients.id));
   }
 
   Transaction() {
+    console.log("amount: ", parseInt(this.state.data.price * 100, 10));
+    console.log("amount 60: ", parseInt(this.state.data.price * 100 * 0.6, 10));
+    console.log(
+      "amount 25: ",
+      parseInt(this.state.data.price * 100 * 0.25, 10)
+    );
+    console.log(
+      "amount 15: ",
+      parseInt(this.state.data.price * 100 * 0.15, 10)
+    );
+
     pagarme.client
       .connect({ api_key: api_key_pagarme })
       .then(client =>
         client.transactions.create({
-          amount: 1000,
+          amount: parseInt(this.state.data.price * 100, 10),
           card_number: "4610464128243302",
           card_holder_name: "abc",
           card_expiration_date: "1120",
@@ -161,6 +182,29 @@ class ProductListContainer extends React.Component {
               zipcode: "03424030"
             }
           },
+          split_rules: [
+            {
+              recipient_id: this.state.seller,
+              // percentage: 60,
+              amount: parseInt(this.state.data.price * 100 * 0.6, 10),
+              liable: true,
+              charge_processing_fee: true
+            },
+            {
+              recipient_id: this.state.me,
+              // percentage: 25,
+              amount: parseInt(this.state.data.price * 100 * 0.25, 10),
+              liable: true,
+              charge_processing_fee: true
+            },
+            {
+              recipient_id: this.state.friend,
+              // percentage: 15,
+              amount: parseInt(this.state.data.price * 100 * 0.15, 10),
+              liable: true,
+              charge_processing_fee: true
+            }
+          ],
           items: [
             {
               id: this.state.data.product_id.toString(),
@@ -187,7 +231,6 @@ class ProductListContainer extends React.Component {
     return (
       <div>
         <ProductItem data={this.state.data} buy />
-        {console.log(typeof this.state.response, this.state.response)}
         {this.state.response !== "" ? (
           <div className="column transaction">
             <p>
@@ -197,6 +240,22 @@ class ProductListContainer extends React.Component {
             <p>
               <strong>Item: </strong>
               {this.state.response.items[0].title}
+            </p>
+            <p>
+              <strong>Total Transação: </strong>
+              R$ {(this.state.response.amount * 0.01).toFixed(2)}
+            </p>
+            <p>
+              <strong>Vendedor: </strong>
+              R$ {(this.state.response.amount * 0.006).toFixed(2)} (60%)
+            </p>
+            <p>
+              <strong>Eu: </strong>
+              R$ {(this.state.response.amount * 0.0025).toFixed(2)} (25%)
+            </p>
+            <p>
+              <strong>Amigo: </strong>
+              R$ {(this.state.response.amount * 0.0015).toFixed(2)} (15%)
             </p>
             <a href="/">Voltar para Lista de Produtos</a>
           </div>
