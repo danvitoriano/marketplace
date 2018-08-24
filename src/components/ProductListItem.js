@@ -6,7 +6,7 @@ import pagarme from "pagarme";
 import TransactionInfo from "./TransactionInfo";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
-const api = "http://localhost:5000/api/products/";
+const api = "https://marketplace-api-server.herokuapp.com/api/products/";
 
 class ProductListContainer extends React.Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import ProductItem from "./ProductItem";
 class ProductListContainer extends React.Component {
   state = { data: [] };
   componentDidMount() {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://marketplace-api-server.herokuapp.com/products")
       .then(response => response.json())
       .then(data => this.setState({ data }));
   }

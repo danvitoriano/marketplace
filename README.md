@@ -62,6 +62,22 @@ Live Demo:
 
 [https://marketplace-react.herokuapp.com/](https://marketplace-react.herokuapp.com/)
 
+## API
+
+To fetch products. Made with Node.js and Express.
+
+[https://marketplace-api-server.herokuapp.com/](https://marketplace-api-server.herokuapp.com/)
+
+Endpoints:
+
+`/api/products` - GET
+
+`/api/products/:product_id` - GET
+
+Repository:
+
+[https://git.heroku.com/marketplace-api-server.git](https://git.heroku.com/marketplace-api-server.git)
+
 ## Contact
 
 <vitoriano08@gmail.com>
