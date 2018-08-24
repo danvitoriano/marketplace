@@ -1,25 +1,22 @@
 import React from "react";
-function FancyBorder(props) {
-  return (
-    <div className={"FancyBorder FancyBorder-" + props.color}>
-      {props.children}
-    </div>
-  );
+function LinkWrapper(props) {
+  if (!props.data.buy) {
+    return <a href={"/" + props.data.id}>{props.children}</a>;
+  } else {
+    return <div />;
+  }
 }
 
 function ProductInfo(props) {
   return (
-    <FancyBorder color="blue">
+    <LinkWrapper color="blue" data={props}>
       <div className="container">
         <h4>
           {props.id} — <b>{props.name}</b>
         </h4>
         <p>{props.price}</p>
-        <a href={"/products/" + props.id}>
-          {props.buy ? "Comprar" : "Detalhes"}
-        </a>
       </div>
-    </FancyBorder>
+    </LinkWrapper>
   );
 }
 

@@ -5081,6 +5081,10 @@ package-json@^4.0.0:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
+pagarme@^3.7.3:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/pagarme/-/pagarme-3.7.3.tgz#c95f390d498ad1f3dbe220f83adc724ef1b4c776"
+
 pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"

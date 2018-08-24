@@ -12,6 +12,16 @@ body {
   margin-bottom: 20px;
 }
 
+.button {
+  clear: both;
+  text-align: center;
+}
+.transaction {
+  clear: both;
+  font-size: 17px;
+  text-align: center;
+}
+
 /* Responsive columns */
 @media screen and (min-width: 768px) {
   .column {
@@ -55,7 +65,22 @@ img {
   height: 100%;
 }
 
-/* Add some padding inside the card container */
 .container {
   padding: 2px 16px;
+}
+
+button {
+  width: 75%;
+  padding: 20px 0;
+  margin: 0px;
+  font-size: 17px;
+  background-color: #0070c9;
+  background: linear-gradient(#42a1ec, #0070c9);
+  border-color: #07c;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
 }
