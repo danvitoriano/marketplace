@@ -34,11 +34,23 @@ Create a production ready `/build` folder. You may serve it with a static server
 serve -s build
 ```
 
+## StoryBook UI components library
+
+To list components styleguide at [http://localhost/9009](http://localhost/9009), run:
+
+```
+yarn storybook
+```
+
+## Continuos Integration
+
+Automated build continuous process with [CircleCI](http://circleci.com)
+
 ## Test
 
 ### Unit Testing
 
-It uses Jest and Enzyme. To run 31 unit tests:
+It uses Jest. To watch unit testing, run:
 
 ```
 yarn test
