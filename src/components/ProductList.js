@@ -8,7 +8,7 @@ const styles = {
   container: css({
     display: "grid",
     padding: "1rem",
-    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
     gridGap: "1rem"
   })
 };

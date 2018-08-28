@@ -4,6 +4,7 @@ import ProductList from "./components/ProductList";
 import ProductListItem from "./components/ProductListItem";
 import Error from "./components/Error";
 // import "./App.css";
+import "./global.css";
 
 // app main
 const App = () => (

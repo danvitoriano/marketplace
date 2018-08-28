@@ -8,6 +8,7 @@ const styles = {
     padding: "1rem",
     gridTemplateColumns: "auto auto",
     backgroundColor: "gainsboro",
+    fontFamily: "Raleway",
     "> div": {
       textAlign: "right"
     }

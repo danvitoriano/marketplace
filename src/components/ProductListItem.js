@@ -239,7 +239,7 @@ class ProductListContainer extends React.Component {
             <Button
               onClick={this.Transaction}
               label="Comprar"
-              className="buy-button"
+              dataCy="buy-button"
             />
             <Link href="/" label="Voltar para Lista de Produtos" />
           </div>

@@ -4,7 +4,12 @@ import { css } from "glamor";
 
 const styles = {
   card: css({
-    display: "grid"
+    display: "grid",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+    padding: 16,
+    textAlign: "center",
+    backgroundColor: "whitesmoke",
+    maxWidth: 300
   })
 };
 

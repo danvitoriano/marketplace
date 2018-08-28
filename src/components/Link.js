@@ -11,7 +11,8 @@ const styles = {
     borderRadius: 3,
     textDecoration: "none",
     transition: "0.1s",
-    margin: 10
+    margin: 10,
+    fontFamily: "Raleway"
   })
 };
 
