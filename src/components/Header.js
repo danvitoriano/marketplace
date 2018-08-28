@@ -7,7 +7,11 @@ function Header(props) {
       <div>
         <h1>Marketplace</h1>
       </div>
-      <div>{!props.backButton ? null : <Link href="/" label="Voltar" />}</div>
+      <div>
+        {!props.backButton ? null : (
+          <Link className="back" href="/" label="Voltar" />
+        )}
+      </div>
     </div>
   );
 }
