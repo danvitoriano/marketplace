@@ -8,7 +8,7 @@ describe("test list all products", function() {
     });
     it("elements should be visible", function() {
       cy.get("#root").should("be.visible");
-      cy.get(".header").should("be.visible");
+      cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("be.visible");
       cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
@@ -24,7 +24,7 @@ describe("test list all products", function() {
     });
     it("elements should be visible", function() {
       cy.get("#root").should("be.visible");
-      cy.get(".header").should("be.visible");
+      cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("be.visible");
       cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
@@ -40,7 +40,7 @@ describe("test list all products", function() {
     });
     it("elements should be visible", function() {
       cy.get("#root").should("be.visible");
-      cy.get(".header").should("be.visible");
+      cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("be.visible");
       cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();

@@ -9,7 +9,7 @@ describe("test buy one product", function() {
     });
     it("elements should be visible", function() {
       cy.get("#root").should("be.visible");
-      cy.get(".header").should("be.visible");
+      cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("be.visible");
       cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
@@ -22,11 +22,11 @@ describe("test buy one product", function() {
     });
     it("buy product id 17762", function() {
       cy.contains("Comprar");
-      cy.wait(5000);
+      cy.wait(2000);
       cy.get(".buy-button").click();
     });
     it("show transaction receipt", function() {
-      cy.wait(5000);
+      cy.wait(2000);
       cy.get(".transaction").should("be.visible");
       cy.contains("Transaction ID");
       cy.contains("555.00");
@@ -34,7 +34,7 @@ describe("test buy one product", function() {
       cy.contains("138.75");
     });
     it("back to home", function() {
-      cy.get(".back")
+      cy.get("[data-cy=back]")
         .should("be.visible")
         .click();
       cy.wait(2000);
@@ -52,7 +52,7 @@ describe("test buy one product", function() {
     });
     it("elements should be visible", function() {
       cy.get("#root").should("be.visible");
-      cy.get(".header").should("be.visible");
+      cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("be.visible");
       cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
@@ -65,11 +65,11 @@ describe("test buy one product", function() {
     });
     it("buy product id 17762", function() {
       cy.contains("Comprar");
-      cy.wait(5000);
+      cy.wait(2000);
       cy.get(".buy-button").click();
     });
     it("show transaction receipt", function() {
-      cy.wait(5000);
+      cy.wait(2000);
       cy.get(".transaction").should("be.visible");
       cy.contains("Transaction ID");
       cy.contains("555.00");
@@ -77,7 +77,7 @@ describe("test buy one product", function() {
       cy.contains("138.75");
     });
     it("back to home", function() {
-      cy.get(".back")
+      cy.get("[data-cy=back]")
         .should("be.visible")
         .click();
       cy.wait(2000);
@@ -95,7 +95,7 @@ describe("test buy one product", function() {
     });
     it("elements should be visible", function() {
       cy.get("#root").should("be.visible");
-      cy.get(".header").should("be.visible");
+      cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("be.visible");
       cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
@@ -108,11 +108,11 @@ describe("test buy one product", function() {
     });
     it("buy product id 17762", function() {
       cy.contains("Comprar");
-      cy.wait(5000);
+      cy.wait(2000);
       cy.get(".buy-button").click();
     });
     it("show transaction receipt", function() {
-      cy.wait(5000);
+      cy.wait(2000);
       cy.get(".transaction").should("be.visible");
       cy.contains("Transaction ID");
       cy.contains("555.00");
@@ -120,7 +120,7 @@ describe("test buy one product", function() {
       cy.contains("138.75");
     });
     it("back to home", function() {
-      cy.get(".back")
+      cy.get("[data-cy=back]")
         .should("be.visible")
         .click();
       cy.wait(2000);

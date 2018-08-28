@@ -10,9 +10,6 @@ const styles = {
     padding: "1rem",
     gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
     gridGap: "1rem"
-  }),
-  card: css({
-    display: "grid"
   })
 };
 

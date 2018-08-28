@@ -10,7 +10,7 @@ import ProductItem from "../components/ProductItem";
 import TransactionInfo from "../components/TransactionInfo";
 import Error from "../components/Error";
 import App from "../App";
-import "../App.css";
+// import "../App.css";
 
 const data = {
   photo: "https://placehold.it/300/B21DCF/ffffff?text=Refined Concrete Soap",

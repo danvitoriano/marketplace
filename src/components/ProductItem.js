@@ -3,12 +3,6 @@ import ProductInfo from "./ProductInfo";
 import { css } from "glamor";
 
 const styles = {
-  container: css({
-    display: "grid",
-    padding: "1rem",
-    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-    gridGap: "1rem"
-  }),
   card: css({
     display: "grid"
   })
