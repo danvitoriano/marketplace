@@ -1,7 +1,15 @@
 import React from "react";
+
+var styles = {
+  display: "block"
+};
 function LinkWrapper(props) {
   if (!props.data.buy) {
-    return <a href={"/" + props.data.id}>{props.children}</a>;
+    return (
+      <a href={"/" + props.data.id} data-cy={props.data.id} style={styles}>
+        {props.children}
+      </a>
+    );
   } else {
     return <div>{props.children}</div>;
   }

@@ -52,10 +52,18 @@ Automated build continuous process with [CircleCI](http://circleci.com)
 
 ### Unit Testing
 
-It uses Jest. To watch unit testing, run:
+It uses Jest and Enzyme. To run unit tests:
 
 ```
 yarn test
+```
+
+### E2E Testing
+
+To run interface tests on browser, download and install [cypress.io](http://cypress.io), a JavaScript End to End Testing Framework, then run:
+
+```
+npx cypress open
 ```
 
 ## Deploy
