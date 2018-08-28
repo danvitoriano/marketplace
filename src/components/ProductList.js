@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
+import Header from "./Header";
 
 class ProductListContainer extends React.Component {
   state = { data: [] };
@@ -10,7 +11,12 @@ class ProductListContainer extends React.Component {
       .then(data => this.setState({ data }));
   }
   render() {
-    return <ProductList data={this.state.data} />;
+    return (
+      <div>
+        <Header />
+        <ProductList data={this.state.data} />
+      </div>
+    );
   }
 }
 
