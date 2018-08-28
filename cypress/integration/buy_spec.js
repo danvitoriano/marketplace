@@ -23,7 +23,7 @@ describe("test buy one product", function() {
     it("buy product id 17762", function() {
       cy.contains("Comprar");
       cy.wait(2000);
-      cy.get(".buy-button").click();
+      cy.get("[data-cy=buy-button]").click();
     });
     it("show transaction receipt", function() {
       cy.wait(2000);
@@ -66,7 +66,7 @@ describe("test buy one product", function() {
     it("buy product id 17762", function() {
       cy.contains("Comprar");
       cy.wait(2000);
-      cy.get(".buy-button").click();
+      cy.get("[data-cy=buy-button]").click();
     });
     it("show transaction receipt", function() {
       cy.wait(2000);
@@ -109,7 +109,7 @@ describe("test buy one product", function() {
     it("buy product id 17762", function() {
       cy.contains("Comprar");
       cy.wait(2000);
-      cy.get(".buy-button").click();
+      cy.get("[data-cy=buy-button]").click();
     });
     it("show transaction receipt", function() {
       cy.wait(2000);
