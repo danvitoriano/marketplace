@@ -3,6 +3,7 @@ import { css } from "glamor";
 
 const styles = {
   link: css({
+    display: "inline-block",
     backgroundColor: "yellowgreen",
     color: "white",
     padding: "10px 20px",

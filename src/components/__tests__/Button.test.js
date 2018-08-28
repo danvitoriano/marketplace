@@ -9,11 +9,6 @@ it("renders without crashing", () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-test("should display div", () => {
-  const wrapper = shallow(<Button />);
-  expect(wrapper.find("div").length).toBe(1);
-});
-
 test("should display button", () => {
   const wrapper = shallow(<Button />);
   expect(wrapper.find("button").length).toBe(1);

@@ -3,8 +3,9 @@ import { css } from "glamor";
 
 const styles = {
   button: css({
+    display: "block",
     padding: 20,
-    margin: 0,
+    margin: 10,
     fontSize: 17,
     backgroundColor: "yellowgreen",
     background: "linear-gradient(yellowgreen, green)",
@@ -18,11 +19,9 @@ const styles = {
 
 function Button(props) {
   return (
-    <div className="column button">
-      <button onClick={props.onClick} data-cy={props.dataCy} {...styles.button}>
-        {props.label}
-      </button>
-    </div>
+    <button onClick={props.onClick} data-cy={props.dataCy} {...styles.button}>
+      {props.label}
+    </button>
   );
 }
 

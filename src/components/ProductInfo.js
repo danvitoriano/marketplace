@@ -4,14 +4,46 @@ import { css } from "glamor";
 const styles = {
   container: css({
     fontFamily: "Raleway",
-    "> h4": {
-      fontWeight: 300,
-      fontSize: 20
+    margin: 10,
+    fontWeight: 300,
+    fontSize: 18,
+    lineHeight: 1.5,
+    "> div:first-child": {
+      fontSize: 12
+      // lineHeight: "12px"
+    },
+    "> div:last-child": {
+      fontSize: 14
+      // lineHeight: "14px"
     }
   }),
   link: css({
     display: "block",
-    textDecoration: "none"
+    textDecoration: "none",
+    transition: 0.1,
+    color: "green",
+    "&:after": {
+      content: "''",
+      display: "inline-block",
+      // height: "1em",
+      width: "100%",
+      borderBottom: "1px solid",
+      // marginTop: "10px",
+      opacity: "0",
+      WebkitTransition: "opacity 0.35s, -webkit-transform 0.35s",
+      transition: "opacity 0.35s, transform 0.35s",
+      WebkitTransform: "scale(0,1)",
+      transform: "scale(0,1)"
+    },
+    "&:hover": {
+      color: "#222",
+      textShadow: "0 O 2px #999999",
+      "&:after": {
+        opacity: "1",
+        WebkitTransform: "scale(1)",
+        transform: "scale(1)"
+      }
+    }
   })
 };
 
@@ -31,10 +63,9 @@ function ProductInfo(props) {
   return (
     <LinkWrapper data={props}>
       <div {...styles.container}>
-        <h4>
-          {props.id} — <b>{props.name}</b>
-        </h4>
-        <p>R$ {props.price}</p>
+        <div>{props.id}</div>
+        <div>{props.name}</div>
+        <div>R$ {props.price}</div>
       </div>
     </LinkWrapper>
   );
