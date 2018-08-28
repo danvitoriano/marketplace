@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("./assets/Raleway.ttf");
+  -moz-osx-font-smoothing: "grayscale";
+  -webkit-font-smoothing: "antialiased";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

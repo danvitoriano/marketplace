@@ -20,7 +20,7 @@ it("renders without crashing buy", () => {
 
 test("should display div  buy", () => {
   const wrapper = shallow(<ProductItem data={data} buy />);
-  expect(wrapper.find("div").length).toBe(2);
+  expect(wrapper.find("div").length).toBe(1);
 });
 
 test("should display img  buy", () => {
@@ -41,7 +41,7 @@ it("renders without crashing", () => {
 
 test("should display div", () => {
   const wrapper = shallow(<ProductItem data={data} />);
-  expect(wrapper.find("div").length).toBe(2);
+  expect(wrapper.find("div").length).toBe(1);
 });
 
 test("should display img", () => {
