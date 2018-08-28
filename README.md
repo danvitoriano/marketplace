@@ -1,5 +1,7 @@
 # React Marketplace
 
+[![CircleCI](https://circleci.com/gh/danvitoriano/marketplace.svg?style=svg)](https://circleci.com/gh/danvitoriano/marketplace)
+
 [Live Demo](https://marketplace-react.herokuapp.com/)
 
 **List itens on sale. Buy an item through third-party payment API**
