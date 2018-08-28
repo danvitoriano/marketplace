@@ -5,6 +5,7 @@ import Button from "./Button";
 import pagarme from "pagarme";
 import TransactionInfo from "./TransactionInfo";
 import Header from "./Header";
+import Link from "./Link";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
 const api = "https://marketplace-api-server.herokuapp.com/api/products/";
@@ -201,7 +202,7 @@ class ProductListContainer extends React.Component {
     return (
       <div>
         <Header backButton />
-        <ProductItem data={this.state.data} buy />{" "}
+        <ProductItem data={this.state.data} buy />
         {/*if buy, do not show link at card || if response is not null, show transaction:*/}
         {this.state.response !== "" ? (
           <div className="column transaction">
@@ -236,7 +237,7 @@ class ProductListContainer extends React.Component {
         ) : (
           <div>
             <Button onClick={this.Transaction} label="Comprar" />
-            <a href="/">Voltar para Lista de Produtos</a>
+            <Link href="/" label="Voltar para Lista de Produtos" />
           </div>
         )}
       </div>
