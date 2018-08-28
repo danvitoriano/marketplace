@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import ProductListItem from "./components/ProductListItem";
 import Error from "./components/Error";
-import "./App.css";
+// import "./App.css";
 
 // app main
 const App = () => (

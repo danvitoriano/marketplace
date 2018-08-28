@@ -11,7 +11,7 @@ describe("test list one product", function() {
       cy.get(".header").should("be.visible");
       cy.get(".row").should("not.be.visible");
       cy.get(".column").should("be.visible");
-      cy.get(".card").should("be.visible");
+      cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
     });
   });
@@ -28,7 +28,7 @@ describe("test list one product", function() {
       cy.get(".header").should("be.visible");
       cy.get(".row").should("not.be.visible");
       cy.get(".column").should("be.visible");
-      cy.get(".card").should("be.visible");
+      cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
     });
   });
@@ -45,7 +45,7 @@ describe("test list one product", function() {
       cy.get(".header").should("be.visible");
       cy.get(".row").should("not.be.visible");
       cy.get(".column").should("be.visible");
-      cy.get(".card").should("be.visible");
+      cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
     });
   });

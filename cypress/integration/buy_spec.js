@@ -11,8 +11,7 @@ describe("test buy one product", function() {
       cy.get("#root").should("be.visible");
       cy.get(".header").should("be.visible");
       cy.get(".row").should("be.visible");
-      cy.get(".column").should("be.visible");
-      cy.get(".card").should("be.visible");
+      cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
     });
     it("get product id 17762", function() {
@@ -55,8 +54,7 @@ describe("test buy one product", function() {
       cy.get("#root").should("be.visible");
       cy.get(".header").should("be.visible");
       cy.get(".row").should("be.visible");
-      cy.get(".column").should("be.visible");
-      cy.get(".card").should("be.visible");
+      cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
     });
     it("get product id 17762", function() {
@@ -99,8 +97,7 @@ describe("test buy one product", function() {
       cy.get("#root").should("be.visible");
       cy.get(".header").should("be.visible");
       cy.get(".row").should("be.visible");
-      cy.get(".column").should("be.visible");
-      cy.get(".card").should("be.visible");
+      cy.get("[data-cy=card]").should("be.visible");
       cy.screenshot();
     });
     it("get product id 17762", function() {

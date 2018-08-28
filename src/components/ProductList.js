@@ -2,6 +2,19 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import Header from "./Header";
+import { css } from "glamor";
+
+const styles = {
+  container: css({
+    display: "grid",
+    padding: "1rem",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    gridGap: "1rem"
+  }),
+  card: css({
+    display: "grid"
+  })
+};
 
 class ProductListContainer extends React.Component {
   state = { data: [] };
@@ -21,7 +34,7 @@ class ProductListContainer extends React.Component {
 }
 
 var ProductList = props => (
-  <div className="row">
+  <div className="row" {...styles.container}>
     {props.data.map(c => (
       <ProductItem key={c.product_id} data={c} />
     ))}
