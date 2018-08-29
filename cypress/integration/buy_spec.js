@@ -32,6 +32,7 @@ describe("test buy one product", function() {
       cy.contains("555.00");
       cy.contains("231.25");
       cy.contains("138.75");
+      cy.screenshot();
     });
     it("back to home", function() {
       cy.get("[data-cy=back]")

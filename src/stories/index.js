@@ -13,7 +13,7 @@ import App from "../App";
 // import "../App.css";
 
 const data = {
-  photo: "https://placehold.it/300/B21DCF/ffffff?text=Refined Concrete Soap",
+  photo: "http://placeimg.com/300/300/tech?t=0.9092886565889047",
   name: "Refined Concrete Soap",
   id: 98715,
   product_id: 98715,
