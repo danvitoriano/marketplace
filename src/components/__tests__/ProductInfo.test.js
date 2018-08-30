@@ -11,17 +11,7 @@ it("renders without crashing", () => {
 
 test("should display div", () => {
   const wrapper = shallow(<ProductInfo />);
-  expect(wrapper.find("div").length).toBe(1);
-});
-
-test("should display h4", () => {
-  const wrapper = shallow(<ProductInfo />);
-  expect(wrapper.find("h4").length).toBe(1);
-});
-
-test("should display p", () => {
-  const wrapper = shallow(<ProductInfo />);
-  expect(wrapper.find("p").length).toBe(1);
+  expect(wrapper.find("div").length).toBe(4);
 });
 
 test("should display a", () => {

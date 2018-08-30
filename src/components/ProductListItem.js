@@ -202,7 +202,7 @@ class ProductListContainer extends React.Component {
     return (
       <div>
         <Header backButton />
-        <ProductItem data={this.state.data} buy />
+        <ProductItem data={this.state.data} buy="buy" />
         {/*if buy, do not show link at card || if response is not null, show transaction:*/}
         {this.state.response !== "" ? (
           <div className="column transaction">
@@ -231,7 +231,7 @@ class ProductListContainer extends React.Component {
                 label="Amigo"
                 value={(this.state.response.amount * 0.0015).toFixed(2)}
               />
-              <a href="/">Voltar para Lista de Produtos</a>
+              <Link href="/" label="Voltar para Lista de Produtos" />
             </div>
           </div>
         ) : (
