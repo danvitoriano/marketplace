@@ -51,9 +51,9 @@ class ModalContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    prevProps.show !== this.props.show
-      ? this.setState({ show: "block" })
-      : null;
+    if (prevProps.show !== this.props.show) {
+      return this.setState({ show: "block" });
+    }
   }
 
   handleClickOutside(event) {
