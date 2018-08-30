@@ -23,11 +23,12 @@ describe("test buy one product", function() {
     it("buy product id 17762", function() {
       cy.contains("Comprar");
       cy.wait(2000);
+      cy.screenshot();
       cy.get("[data-cy=buy-button]").click();
     });
     it("show transaction receipt", function() {
       cy.wait(2000);
-      cy.get(".transaction").should("be.visible");
+      cy.get("[data-cy=transaction]").should("be.visible");
       cy.contains("Transaction ID");
       cy.contains("555.00");
       cy.contains("231.25");
@@ -35,6 +36,9 @@ describe("test buy one product", function() {
       cy.screenshot();
     });
     it("back to home", function() {
+      cy.get("[data-cy=close-modal]")
+        .should("be.visible")
+        .click();
       cy.get("[data-cy=back]")
         .should("be.visible")
         .click();
@@ -67,17 +71,22 @@ describe("test buy one product", function() {
     it("buy product id 17762", function() {
       cy.contains("Comprar");
       cy.wait(2000);
+      cy.screenshot();
       cy.get("[data-cy=buy-button]").click();
     });
     it("show transaction receipt", function() {
       cy.wait(2000);
-      cy.get(".transaction").should("be.visible");
+      cy.get("[data-cy=transaction]").should("be.visible");
       cy.contains("Transaction ID");
       cy.contains("555.00");
       cy.contains("231.25");
       cy.contains("138.75");
+      cy.screenshot();
     });
     it("back to home", function() {
+      cy.get("[data-cy=close-modal]")
+        .should("be.visible")
+        .click();
       cy.get("[data-cy=back]")
         .should("be.visible")
         .click();
@@ -110,17 +119,22 @@ describe("test buy one product", function() {
     it("buy product id 17762", function() {
       cy.contains("Comprar");
       cy.wait(2000);
+      cy.screenshot();
       cy.get("[data-cy=buy-button]").click();
     });
     it("show transaction receipt", function() {
       cy.wait(2000);
-      cy.get(".transaction").should("be.visible");
+      cy.get("[data-cy=transaction]").should("be.visible");
       cy.contains("Transaction ID");
       cy.contains("555.00");
       cy.contains("231.25");
       cy.contains("138.75");
+      cy.screenshot();
     });
     it("back to home", function() {
+      cy.get("[data-cy=close-modal]")
+        .should("be.visible")
+        .click();
       cy.get("[data-cy=back]")
         .should("be.visible")
         .click();

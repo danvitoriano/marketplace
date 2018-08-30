@@ -10,7 +10,7 @@ describe("test list one product", function() {
       cy.get("#root").should("be.visible");
       cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("not.be.visible");
-      cy.get("[data-cy=card]").should("be.visible");
+      cy.get("[data-cy=detail]").should("be.visible");
       cy.wait(1000);
       cy.screenshot();
     });
@@ -27,7 +27,7 @@ describe("test list one product", function() {
       cy.get("#root").should("be.visible");
       cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("not.be.visible");
-      cy.get("[data-cy=card]").should("be.visible");
+      cy.get("[data-cy=detail]").should("be.visible");
       cy.wait(1000);
       cy.screenshot();
     });
@@ -44,7 +44,7 @@ describe("test list one product", function() {
       cy.get("#root").should("be.visible");
       cy.get("[data-cy=header]").should("be.visible");
       cy.get(".row").should("not.be.visible");
-      cy.get("[data-cy=card]").should("be.visible");
+      cy.get("[data-cy=detail]").should("be.visible");
       cy.wait(1000);
       cy.screenshot();
     });

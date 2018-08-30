@@ -19,11 +19,11 @@ const styles = {
     gridTemplateColumns: "auto",
     padding: 16,
     backgroundColor: "white",
-    maxWidth: 320,
+    maxWidth: 340,
     margin: "0 auto",
     "@media(min-width: 570px)": {
       gridTemplateColumns: "350px auto",
-      maxWidth: 1000,
+      maxWidth: 1024,
       margin: "0 auto"
     }
   })

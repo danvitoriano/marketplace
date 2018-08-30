@@ -78,7 +78,11 @@ class ModalContainer extends React.Component {
         })}
       >
         <div {...styles.modal_content} ref={this.setWrapperRef}>
-          <span {...styles.close} onClick={this.handleClick}>
+          <span
+            data-cy="close-modal"
+            {...styles.close}
+            onClick={this.handleClick}
+          >
             &times;
           </span>
           {this.props.render}

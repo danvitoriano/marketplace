@@ -10,10 +10,10 @@ const styles = {
     padding: "1rem",
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
     gridGap: "1rem",
-    maxWidth: 320,
+    maxWidth: 340,
     margin: "0 auto",
     "@media(min-width: 570px)": {
-      maxWidth: 1000,
+      maxWidth: 1024,
       margin: "0 auto"
     }
   })
