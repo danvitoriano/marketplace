@@ -1,11 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
-import Button from "./Button";
-import pagarme from "pagarme";
-import TransactionInfo from "./TransactionInfo";
 import Header from "./Header";
-import Link from "./Link";
+import pagarme from "pagarme";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
 const api = "https://marketplace-api-server.herokuapp.com/api/products/";
@@ -199,53 +196,31 @@ class ProductListContainer extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <Header backButton />
-        <ProductItem data={this.state.data} buy="buy" />
-        {/*if buy, do not show link at card || if response is not null, show transaction:*/}
-        {this.state.response !== "" ? (
-          <div className="column transaction">
-            <div className="card">
-              <TransactionInfo
-                label="Transaction ID"
-                value={this.state.response.tid}
-              />
-              <TransactionInfo
-                label="Item"
-                value={this.state.response.items[0].title}
-              />
-              <TransactionInfo
-                label="Total Transação"
-                value={(this.state.response.amount * 0.01).toFixed(2)}
-              />
-              <TransactionInfo
-                label="Vendedor"
-                value={(this.state.response.amount * 0.006).toFixed(2)}
-              />
-              <TransactionInfo
-                label="Eu"
-                value={(this.state.response.amount * 0.0025).toFixed(2)}
-              />
-              <TransactionInfo
-                label="Amigo"
-                value={(this.state.response.amount * 0.0015).toFixed(2)}
-              />
-              <Link href="/" label="Voltar para Lista de Produtos" />
-            </div>
-          </div>
-        ) : (
-          <div>
-            <Button
-              onClick={this.Transaction}
-              label="Comprar"
-              dataCy="buy-button"
-            />
-            <Link href="/" label="Voltar para Lista de Produtos" />
-          </div>
-        )}
-      </div>
-    );
+    if (this.state.response !== "") {
+      return (
+        <div>
+          <Header backButton />
+          <ProductItem
+            data={this.state.data}
+            buy="buy"
+            onClick={this.Transaction}
+            transaction={this.state.response}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Header backButton />
+          <ProductItem
+            data={this.state.data}
+            buy="buy"
+            onClick={this.Transaction}
+            transaction={null}
+          />
+        </div>
+      );
+    }
   }
 }
 

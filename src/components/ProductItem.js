@@ -1,6 +1,10 @@
 import React from "react";
 import ProductInfo from "./ProductInfo";
+import ModalContainer from "./ModalContainer";
+import Button from "./Button";
 import { css } from "glamor";
+
+import Transaction from "./Transaction";
 
 const styles = {
   card: css({
@@ -12,9 +16,16 @@ const styles = {
   }),
   detail: css({
     display: "grid",
-    gridTemplateColumns: "auto auto",
+    gridTemplateColumns: "auto",
     padding: 16,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    maxWidth: 320,
+    margin: "0 auto",
+    "@media(min-width: 570px)": {
+      gridTemplateColumns: "350px auto",
+      maxWidth: 1000,
+      margin: "0 auto"
+    }
   })
 };
 
@@ -24,12 +35,25 @@ function ProductItem(props) {
       return (
         <div data-cy="detail" {...styles.detail}>
           <img src={props.data.photo} alt={props.data.name} />
-          <ProductInfo
-            name={props.data.name}
-            id={props.data.product_id}
-            price={props.data.price}
-            buy={props.buy}
-          />
+          <div>
+            <ProductInfo
+              name={props.data.name}
+              id={props.data.product_id}
+              price={props.data.price}
+              buy={props.buy}
+            />
+            <Button
+              onClick={props.onClick}
+              label="Comprar"
+              dataCy="buy-button"
+            />
+            {props.transaction !== null ? (
+              <ModalContainer
+                show={props.transaction}
+                render={<Transaction transaction={props.transaction} />}
+              />
+            ) : null}
+          </div>
         </div>
       );
     default:

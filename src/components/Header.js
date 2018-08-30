@@ -9,8 +9,14 @@ const styles = {
     gridTemplateColumns: "auto auto",
     backgroundColor: "gainsboro",
     fontFamily: "Raleway",
+    maxWidth: 320,
+    margin: "0 auto",
     "> div": {
       textAlign: "right"
+    },
+    "@media(min-width: 570px)": {
+      maxWidth: 1000,
+      margin: "0 auto"
     }
   })
 };
