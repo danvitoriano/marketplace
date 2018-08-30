@@ -1,12 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
-
-import pagarme from "pagarme";
-
 import Header from "./Header";
-import TransactionInfo from "./TransactionInfo";
-import Link from "./Link";
+import pagarme from "pagarme";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
 const api = "https://marketplace-api-server.herokuapp.com/api/products/";
