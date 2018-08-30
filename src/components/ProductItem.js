@@ -32,7 +32,6 @@ const styles = {
 function ProductItem(props) {
   switch (props.buy) {
     case "buy":
-      // transaction = props.transaction;
       return (
         <div data-cy="detail" {...styles.detail}>
           <img src={props.data.photo} alt={props.data.name} />
@@ -48,7 +47,6 @@ function ProductItem(props) {
               label="Comprar"
               dataCy="buy-button"
             />
-            {console.log(props.transaction)}
             {props.transaction !== null ? (
               <ModalContainer
                 show={props.transaction}
