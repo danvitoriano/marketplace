@@ -14,22 +14,77 @@ const data = {
 
 it("renders without crashing buy", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<ProductItem data={data} buy />, div);
+  ReactDOM.render(
+    <ProductItem data={data} buy="buy" transaction={null} />,
+    div
+  );
   ReactDOM.unmountComponentAtNode(div);
 });
 
 test("should display div  buy", () => {
-  const wrapper = shallow(<ProductItem data={data} buy />);
-  expect(wrapper.find("div").length).toBe(1);
+  const wrapper = shallow(
+    <ProductItem data={data} buy="buy" transaction={null} />
+  );
+  expect(wrapper.find("div").length).toBe(2);
 });
 
 test("should display img  buy", () => {
-  const wrapper = shallow(<ProductItem data={data} buy />);
+  const wrapper = shallow(
+    <ProductItem data={data} buy="buy" transaction={null} />
+  );
   expect(wrapper.find("img").length).toBe(1);
 });
 
 test("should display ProductInfo  buy", () => {
-  const wrapper = shallow(<ProductItem data={data} buy />);
+  const wrapper = shallow(
+    <ProductItem data={data} buy="buy" transaction={null} />
+  );
+  expect(wrapper.find(ProductInfo).length).toBe(1);
+});
+
+it("renders without crashingbuy with transaction", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(
+    <ProductItem
+      data={data}
+      buy="buy"
+      transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+    />,
+    div
+  );
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+test("should display div buy with transaction", () => {
+  const wrapper = shallow(
+    <ProductItem
+      data={data}
+      buy="buy"
+      transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+    />
+  );
+  expect(wrapper.find("div").length).toBe(2);
+});
+
+test("should display img buy with transaction", () => {
+  const wrapper = shallow(
+    <ProductItem
+      data={data}
+      buy="buy"
+      transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+    />
+  );
+  expect(wrapper.find("img").length).toBe(1);
+});
+
+test("should display ProductInfo buy with transaction", () => {
+  const wrapper = shallow(
+    <ProductItem
+      data={data}
+      buy="buy"
+      transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+    />
+  );
   expect(wrapper.find(ProductInfo).length).toBe(1);
 });
 
