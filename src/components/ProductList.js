@@ -9,7 +9,13 @@ const styles = {
     display: "grid",
     padding: "1rem",
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gridGap: "1rem"
+    gridGap: "1rem",
+    maxWidth: 320,
+    margin: "0 auto",
+    "@media(min-width: 570px)": {
+      maxWidth: 1000,
+      margin: "0 auto"
+    }
   })
 };
 
