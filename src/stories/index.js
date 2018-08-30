@@ -8,24 +8,29 @@ import Header from "../components/Header";
 import ProductInfo from "../components/ProductInfo";
 import ProductItem from "../components/ProductItem";
 import TransactionInfo from "../components/TransactionInfo";
+import Transaction from "../components/Transaction";
 import Error from "../components/Error";
 import App from "../App";
-// import "../App.css";
+import ModalContainer from "../components/ModalContainer";
 
 const data = {
   photo: "http://placeimg.com/300/300/tech?t=0.9092886565889047",
   name: "Refined Concrete Soap",
+  title: "Refined Concrete Soap",
   id: 98715,
   product_id: 98715,
-  price: "848.00"
+  price: "848.00",
+  amount: "84800",
+  tid: 4198520,
+  label: "Transaction ID"
 };
 
 storiesOf("Button", module).add("with text clicked", () => (
-  <Button onClick={action("clicked")} label="Hello Button" />
+  <Button onClick={action("clicked")} label={data.label} />
 ));
 
 storiesOf("Link", module).add("with text", () => (
-  <Link href="/" label="Hello Link" />
+  <Link href="/" label={data.label} />
 ));
 
 storiesOf("Header", module)
@@ -55,7 +60,7 @@ storiesOf("ProductItem", module)
 
 storiesOf("TransactionInfo", module).add(
   "with buy props, do not show link",
-  () => <TransactionInfo label="Transaction ID" value="123456" />
+  () => <TransactionInfo label={data.label} value={data.tid} />
 );
 
 storiesOf("ProductList", module)
@@ -68,10 +73,30 @@ storiesOf("ProductList", module)
 
 storiesOf("ProductListItem", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={[{ pathname: "/17662" }]} initialIndex={1}>
+    <MemoryRouter
+      initialEntries={[{ pathname: "/" + data.id }]}
+      initialIndex={1}
+    >
       {story()}
     </MemoryRouter>
   ))
   .add("pathname: '/:product_id'", () => <App />);
 
 storiesOf("Error", module).add("route not found", () => <Error />);
+
+storiesOf("Transaction", module).add("show transaction receipt", () => (
+  <Transaction
+    transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+  />
+));
+
+storiesOf("ModalContainer", module).add("open a modal render", () => (
+  <ModalContainer
+    show={{ tid: data.tid, amount: data.amount, items: [data] }}
+    render={
+      <Transaction
+        transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+      />
+    }
+  />
+));
