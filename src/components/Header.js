@@ -9,13 +9,13 @@ const styles = {
     gridTemplateColumns: "auto auto",
     backgroundColor: "gainsboro",
     fontFamily: "Raleway",
-    maxWidth: 320,
+    maxWidth: 340,
     margin: "0 auto",
     "> div": {
       textAlign: "right"
     },
     "@media(min-width: 570px)": {
-      maxWidth: 1000,
+      maxWidth: 1024,
       margin: "0 auto"
     }
   })

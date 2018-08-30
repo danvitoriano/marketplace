@@ -10,11 +10,9 @@ const styles = {
     lineHeight: 1.5,
     "> div:first-child": {
       fontSize: 12
-      // lineHeight: "12px"
     },
     "> div:last-child": {
       fontSize: 14
-      // lineHeight: "14px"
     }
   }),
   link: css({
@@ -25,10 +23,8 @@ const styles = {
     "&:after": {
       content: "''",
       display: "inline-block",
-      // height: "1em",
       width: "100%",
       borderBottom: "1px solid",
-      // marginTop: "10px",
       opacity: "0",
       WebkitTransition: "opacity 0.35s, -webkit-transform 0.35s",
       transition: "opacity 0.35s, transform 0.35s",

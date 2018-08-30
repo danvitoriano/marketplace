@@ -3,7 +3,7 @@ import TransactionInfo from "./TransactionInfo";
 
 function Transaction(props) {
   return (
-    <div>
+    <div data-cy="transaction">
       <TransactionInfo label="Transaction ID" value={props.transaction.tid} />
       <TransactionInfo label="Item" value={props.transaction.items[0].title} />
       <TransactionInfo
