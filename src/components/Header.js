@@ -4,31 +4,35 @@ import { css } from "glamor";
 
 const styles = {
   container: css({
+    display: "block",
+    backgroundColor: "gainsboro",
+    fontFamily: "Raleway"
+  }),
+  wrapper: css({
     display: "grid",
     padding: "1rem",
     gridTemplateColumns: "auto auto",
-    backgroundColor: "gainsboro",
-    fontFamily: "Raleway",
-    maxWidth: 340,
     margin: "0 auto",
-    "> div": {
-      textAlign: "right"
-    },
     "@media(min-width: 570px)": {
       maxWidth: 1024,
       margin: "0 auto"
     }
+  }),
+  back: css({
+    textAlign: "right"
   })
 };
 
 function Header(props) {
   return (
     <div {...styles.container} data-cy="header">
-      <h1>Marketplace</h1>
-      <div>
-        {!props.backButton ? null : (
-          <Link dataCy="back" href="/" label="Voltar" />
-        )}
+      <div {...styles.wrapper}>
+        <h1>Marketplace</h1>
+        <div {...styles.back}>
+          {!props.backButton ? null : (
+            <Link dataCy="back" href="/" label="Voltar" />
+          )}
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const opacity = css.keyframes({
 const styles = {
   modal: css({
     position: "fixed",
-    zIndex: "1",
+    zIndex: 1,
     left: "0",
     top: "0",
     width: "100%",
@@ -24,17 +24,20 @@ const styles = {
     animation: `${opacity} .3s ease-in`
   }),
   modal_content: css({
-    backgroundColor: "#fefefe",
+    backgroundColor: "white",
     margin: "15% auto",
-    padding: "20px",
-    border: "1px solid #888",
-    width: "80%",
-    animation: `${slideUp} .3s ease-in`
+    padding: 20,
+    border: "1px solid darkgray",
+    animation: `${slideUp} .3s ease-in`,
+    width: "80vw",
+    "@media(min-width: 768px)": {
+      width: "60vw"
+    }
   }),
   close: css({
-    color: "#aaa",
+    color: "darkgray",
     float: "right",
-    fontSize: "28px",
+    fontSize: 28,
     fontWeight: "bold",
     "&:hover": {
       color: "black",

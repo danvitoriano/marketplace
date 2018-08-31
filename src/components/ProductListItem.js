@@ -18,6 +18,7 @@ class ProductListContainer extends React.Component {
       data: [],
       response: "",
       bankAccount: "",
+      payables: [],
       seller: "",
       me: "",
       friend: "",
@@ -187,11 +188,10 @@ class ProductListContainer extends React.Component {
 
   Payables() {
     var tid = this.state.response.tid;
-    console.log("this.state.response.tid: ", this.state.response.tid);
     pagarme.client // paybables transaction return object
       .connect({ api_key: api_key_pagarme })
       .then(client => client.payables.find({ transactionId: tid }))
-      .then(payables => console.log("payables: ", payables));
+      .then(payables => this.setState({ payables }));
   }
 
   componentDidMount() {
@@ -212,6 +212,7 @@ class ProductListContainer extends React.Component {
             onClick={this.Transaction}
             transaction={this.state.response}
             loadingTransaction={this.state.loadingTransaction}
+            payables={this.state.payables}
           />
         </div>
       );

@@ -5,9 +5,12 @@ const styles = {
   container: css({
     fontFamily: "Raleway",
     margin: 10,
-    "> strong": {
+    "> div": {
+      backgroundColor: "yellowgreen",
+      color: "white",
       fontWeight: 300,
-      fontSize: 18
+      padding: "5px 0",
+      textIndent: 10
     }
   })
 };
@@ -15,7 +18,7 @@ const styles = {
 function TransactionInfo(props) {
   return (
     <div {...styles.container}>
-      <strong>{props.label}: </strong>
+      <div>{props.label}: </div>
       {props.value}
     </div>
   );

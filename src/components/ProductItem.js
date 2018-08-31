@@ -20,7 +20,7 @@ const styles = {
     gridTemplateColumns: "auto",
     padding: 16,
     backgroundColor: "white",
-    maxWidth: 340,
+    maxWidth: 300,
     margin: "0 auto",
     "@media(min-width: 570px)": {
       gridTemplateColumns: "350px auto",
@@ -53,7 +53,12 @@ function ProductItem(props) {
             ) : props.transaction !== null ? (
               <ModalContainer
                 show={props.transaction}
-                render={<Transaction transaction={props.transaction} />}
+                render={
+                  <Transaction
+                    transaction={props.transaction}
+                    payables={props.payables}
+                  />
+                }
               />
             ) : null}
           </div>

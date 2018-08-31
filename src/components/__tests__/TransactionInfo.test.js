@@ -10,10 +10,5 @@ it("renders without crashing buy", () => {
 
 test("should display div", () => {
   const wrapper = shallow(<TransactionInfo />);
-  expect(wrapper.find("div").length).toBe(1);
-});
-
-test("should display strong", () => {
-  const wrapper = shallow(<TransactionInfo />);
-  expect(wrapper.find("strong").length).toBe(1);
+  expect(wrapper.find("div").length).toBe(2);
 });
