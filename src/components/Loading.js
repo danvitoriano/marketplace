@@ -1,9 +1,8 @@
 import React from "react";
-import { css } from "glamor";
+import { css, style } from "glamor";
 
-const bounce = css.keyframes({
-  "0%": { transform: "rotate(0deg)" },
-  "100%": { transform: "rotate(360deg)" }
+const round = css.keyframes({
+  to: { transform: "rotate(360deg)" }
 });
 
 const styles = {
@@ -11,7 +10,6 @@ const styles = {
     position: "relative",
     background: "transparent",
     zIndex: "1",
-    height: "100vh",
     "> div": {
       margin: 0,
       position: "absolute",
@@ -22,17 +20,23 @@ const styles = {
         border: "16px solid gainsboro",
         borderTop: "16px solid yellowgreen",
         borderRadius: "50%",
-        width: 120,
-        height: 120,
-        animation: `${bounce} 2s linear infinite`
+        width: 45,
+        height: 45,
+        animation: `${round} .6s linear infinite`
       }
     }
   })
 };
 
-function Loading() {
+function Loading(props) {
+  var height;
+  props.small ? (height = "px") : (height = "vh");
   return (
-    <div data-cy="loading" {...styles.loading}>
+    <div
+      data-cy="loading"
+      {...styles.loading}
+      {...style({ height: `${"100" + height}` })}
+    >
       <div>
         <div />
       </div>

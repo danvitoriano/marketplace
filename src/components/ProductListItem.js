@@ -18,10 +18,12 @@ class ProductListContainer extends React.Component {
       data: [],
       response: "",
       bankAccount: "",
+      payables: [],
       seller: "",
       me: "",
       friend: "",
-      loading: true
+      loading: true,
+      loadingTransaction: true
     };
   }
 
@@ -95,6 +97,7 @@ class ProductListContainer extends React.Component {
   }
 
   Transaction() {
+    this.setState({ loadingTransaction: true });
     pagarme.client // transaction with split_rule
       .connect({ api_key: api_key_pagarme })
       .then(client =>
@@ -177,17 +180,18 @@ class ProductListContainer extends React.Component {
           ]
         })
       )
-      .then(response => this.setState({ response: response }))
+      .then(response =>
+        this.setState({ response: response, loadingTransaction: false })
+      )
       .then(this.Payables);
   }
 
   Payables() {
     var tid = this.state.response.tid;
-    console.log("this.state.response.tid: ", this.state.response.tid);
     pagarme.client // paybables transaction return object
       .connect({ api_key: api_key_pagarme })
       .then(client => client.payables.find({ transactionId: tid }))
-      .then(payables => console.log("payables: ", payables));
+      .then(payables => this.setState({ payables }));
   }
 
   componentDidMount() {
@@ -207,6 +211,8 @@ class ProductListContainer extends React.Component {
             buy="buy"
             onClick={this.Transaction}
             transaction={this.state.response}
+            loadingTransaction={this.state.loadingTransaction}
+            payables={this.state.payables}
           />
         </div>
       );

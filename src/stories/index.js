@@ -12,6 +12,7 @@ import Transaction from "../components/Transaction";
 import Error from "../components/Error";
 import App from "../App";
 import ModalContainer from "../components/ModalContainer";
+import Loading from "../components/Loading";
 
 const data = {
   photo: "http://placeimg.com/300/300/tech?t=0.9092886565889047",
@@ -100,3 +101,7 @@ storiesOf("ModalContainer", module).add("open a modal render", () => (
     }
   />
 ));
+
+storiesOf("Loading", module).add("100vh", () => <Loading />);
+
+storiesOf("Loading", module).add("small 100px", () => <Loading small />);

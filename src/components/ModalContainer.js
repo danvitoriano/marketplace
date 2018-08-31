@@ -1,28 +1,43 @@
 import React from "react";
 import { css, style } from "glamor";
 
+const slideUp = css.keyframes({
+  "0%": { transform: "translateY(1000px)" },
+  "100%": { transform: "translateY(0)" }
+});
+
+const opacity = css.keyframes({
+  "0%": { opacity: "0" },
+  "100%": { opacity: "1" }
+});
+
 const styles = {
   modal: css({
     position: "fixed",
-    zIndex: "1",
+    zIndex: 1,
     left: "0",
     top: "0",
     width: "100%",
     height: "100%",
     overflow: "auto",
-    backgroundColor: "rgba(0,0,0,0.4)"
+    backgroundColor: "rgba(0,0,0,0.4)",
+    animation: `${opacity} .3s ease-in`
   }),
   modal_content: css({
-    backgroundColor: "#fefefe",
-    margin: "15% auto",
-    padding: "20px",
-    border: "1px solid #888",
-    width: "80%"
+    backgroundColor: "white",
+    margin: "10% auto",
+    padding: 20,
+    border: "1px solid darkgray",
+    animation: `${slideUp} .3s ease-in`,
+    width: "80vw",
+    "@media(min-width: 768px)": {
+      width: "60vw"
+    }
   }),
   close: css({
-    color: "#aaa",
+    color: "darkgray",
     float: "right",
-    fontSize: "28px",
+    fontSize: 28,
     fontWeight: "bold",
     "&:hover": {
       color: "black",
