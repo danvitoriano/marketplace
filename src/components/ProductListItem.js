@@ -4,6 +4,7 @@ import ProductItem from "./ProductItem";
 import Header from "./Header";
 import Loading from "./Loading";
 import pagarme from "pagarme";
+import Error from "./Error";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
 const api = "https://marketplace-api-server.herokuapp.com/api/products/";
@@ -14,6 +15,7 @@ class ProductListContainer extends React.Component {
     this.Recipients = this.Recipients.bind(this);
     this.Transaction = this.Transaction.bind(this);
     this.Payables = this.Payables.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
     this.state = {
       data: [],
       response: "",
@@ -23,7 +25,8 @@ class ProductListContainer extends React.Component {
       me: "",
       friend: "",
       loading: true,
-      loadingTransaction: true
+      loadingTransaction: true,
+      error: ""
     };
   }
 
@@ -194,11 +197,25 @@ class ProductListContainer extends React.Component {
       .then(payables => this.setState({ payables }));
   }
 
+  handleErrors(response) {
+    if (!response.ok) {
+      this.setState({
+        loading: false,
+        error: response.status + " - " + response.statusText
+      });
+    }
+    return response;
+  }
+
   componentDidMount() {
     this.Recipients();
     fetch(`${api + this.props.match.params.product_id}`)
+      .then(this.handleErrors)
       .then(response => response.json())
-      .then(data => this.setState({ data: data, loading: false }));
+      .then(data => this.setState({ data: data, loading: false }))
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -218,6 +235,8 @@ class ProductListContainer extends React.Component {
       );
     } else if (this.state.loading === true) {
       return <Loading />;
+    } else if (this.state.error) {
+      return <Error status={this.state.error} />;
     } else {
       return (
         <div>
