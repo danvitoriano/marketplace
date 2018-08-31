@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import Header from "./Header";
+import Loading from "./Loading";
 import pagarme from "pagarme";
 
 const api_key_pagarme = "ak_test_N00fKHmWDAywhJOykmjKx52XvSgvCE";
@@ -19,7 +20,8 @@ class ProductListContainer extends React.Component {
       bankAccount: "",
       seller: "",
       me: "",
-      friend: ""
+      friend: "",
+      loading: true
     };
   }
 
@@ -192,7 +194,7 @@ class ProductListContainer extends React.Component {
     this.Recipients();
     fetch(`${api + this.props.match.params.product_id}`)
       .then(response => response.json())
-      .then(data => this.setState({ data }));
+      .then(data => this.setState({ data: data, loading: false }));
   }
 
   render() {
@@ -208,6 +210,8 @@ class ProductListContainer extends React.Component {
           />
         </div>
       );
+    } else if (this.state.loading === true) {
+      return <Loading />;
     } else {
       return (
         <div>
