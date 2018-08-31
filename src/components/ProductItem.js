@@ -5,6 +5,7 @@ import Button from "./Button";
 import { css } from "glamor";
 
 import Transaction from "./Transaction";
+import Loading from "./Loading";
 
 const styles = {
   card: css({
@@ -47,7 +48,9 @@ function ProductItem(props) {
               label="Comprar"
               dataCy="buy-button"
             />
-            {props.transaction !== null ? (
+            {props.loadingTransaction === true ? (
+              <Loading small />
+            ) : props.transaction !== null ? (
               <ModalContainer
                 show={props.transaction}
                 render={<Transaction transaction={props.transaction} />}

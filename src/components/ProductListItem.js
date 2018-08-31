@@ -21,7 +21,8 @@ class ProductListContainer extends React.Component {
       seller: "",
       me: "",
       friend: "",
-      loading: true
+      loading: true,
+      loadingTransaction: true
     };
   }
 
@@ -95,6 +96,7 @@ class ProductListContainer extends React.Component {
   }
 
   Transaction() {
+    this.setState({ loadingTransaction: true });
     pagarme.client // transaction with split_rule
       .connect({ api_key: api_key_pagarme })
       .then(client =>
@@ -177,7 +179,9 @@ class ProductListContainer extends React.Component {
           ]
         })
       )
-      .then(response => this.setState({ response: response }))
+      .then(response =>
+        this.setState({ response: response, loadingTransaction: false })
+      )
       .then(this.Payables);
   }
 
@@ -207,6 +211,7 @@ class ProductListContainer extends React.Component {
             buy="buy"
             onClick={this.Transaction}
             transaction={this.state.response}
+            loadingTransaction={this.state.loadingTransaction}
           />
         </div>
       );

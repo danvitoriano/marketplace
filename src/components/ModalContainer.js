@@ -1,6 +1,16 @@
 import React from "react";
 import { css, style } from "glamor";
 
+const slideUp = css.keyframes({
+  "0%": { transform: "translateY(1000px)" },
+  "100%": { transform: "translateY(0)" }
+});
+
+const opacity = css.keyframes({
+  "0%": { opacity: "0" },
+  "100%": { opacity: "1" }
+});
+
 const styles = {
   modal: css({
     position: "fixed",
@@ -10,14 +20,16 @@ const styles = {
     width: "100%",
     height: "100%",
     overflow: "auto",
-    backgroundColor: "rgba(0,0,0,0.4)"
+    backgroundColor: "rgba(0,0,0,0.4)",
+    animation: `${opacity} .3s ease-in`
   }),
   modal_content: css({
     backgroundColor: "#fefefe",
     margin: "15% auto",
     padding: "20px",
     border: "1px solid #888",
-    width: "80%"
+    width: "80%",
+    animation: `${slideUp} .3s ease-in`
   }),
   close: css({
     color: "#aaa",
