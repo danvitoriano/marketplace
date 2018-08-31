@@ -13,6 +13,13 @@ const styles = {
     padding: "1rem",
     gridTemplateColumns: "auto auto",
     margin: "0 auto",
+    "> h1 a": {
+      textDecoration: "none",
+      color: "#222",
+      "&:hover": {
+        textShadow: "0 0 1px gray"
+      }
+    },
     "@media(min-width: 570px)": {
       maxWidth: 1024,
       margin: "0 auto"
@@ -27,7 +34,9 @@ function Header(props) {
   return (
     <div {...styles.container} data-cy="header">
       <div {...styles.wrapper}>
-        <h1>Marketplace</h1>
+        <h1>
+          <a href="/">Marketplace</a>
+        </h1>
         <div {...styles.back}>
           {!props.backButton ? null : (
             <Link dataCy="back" href="/" label="Voltar" />

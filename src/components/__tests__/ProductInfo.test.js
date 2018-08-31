@@ -14,11 +14,6 @@ test("should display div", () => {
   expect(wrapper.find("div").length).toBe(4);
 });
 
-test("should display a", () => {
-  const wrapper = mount(<ProductInfo />);
-  expect(wrapper.find("a").length).toBe(1);
-});
-
 test("should NOT display a with props buy", () => {
   const wrapper = mount(<ProductInfo buy />);
   expect(wrapper.find("a").length).toBe(0);

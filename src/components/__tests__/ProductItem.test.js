@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ProductItem from "../ProductItem";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import ProductInfo from "../ProductInfo";
 
 const data = {
@@ -97,6 +97,11 @@ it("renders without crashing", () => {
 test("should display div", () => {
   const wrapper = shallow(<ProductItem data={data} />);
   expect(wrapper.find("div").length).toBe(1);
+});
+
+test("should display a", () => {
+  const wrapper = mount(<ProductItem data={data} />);
+  expect(wrapper.find("a").length).toBe(1);
 });
 
 test("should display img", () => {

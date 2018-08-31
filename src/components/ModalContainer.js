@@ -25,7 +25,7 @@ const styles = {
   }),
   modal_content: css({
     backgroundColor: "white",
-    margin: "15% auto",
+    margin: "10% auto",
     padding: 20,
     border: "1px solid darkgray",
     animation: `${slideUp} .3s ease-in`,

@@ -2,10 +2,9 @@ import React from "react";
 import ProductInfo from "./ProductInfo";
 import ModalContainer from "./ModalContainer";
 import Button from "./Button";
-import { css } from "glamor";
-
 import Transaction from "./Transaction";
 import Loading from "./Loading";
+import { css } from "glamor";
 
 const styles = {
   card: css({
@@ -13,7 +12,10 @@ const styles = {
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
     padding: 16,
     backgroundColor: "whitesmoke",
-    maxWidth: 300
+    maxWidth: 300,
+    "> img": {
+      width: "100%"
+    }
   }),
   detail: css({
     display: "grid",
@@ -26,6 +28,32 @@ const styles = {
       gridTemplateColumns: "350px auto",
       maxWidth: 1024,
       margin: "0 auto"
+    }
+  }),
+  link: css({
+    display: "block",
+    textDecoration: "none",
+    transition: 0.1,
+    color: "green",
+    "&:after": {
+      content: "''",
+      display: "inline-block",
+      width: "100%",
+      borderBottom: "2px solid",
+      opacity: "0",
+      WebkitTransition: "opacity 0.35s, -webkit-transform 0.35s",
+      transition: "opacity 0.35s, transform 0.35s",
+      WebkitTransform: "scale(0,1)",
+      transform: "scale(0,1)"
+    },
+    "&:hover": {
+      color: "black",
+      textShadow: "0 0 2px gainsboro",
+      "&:after": {
+        opacity: "1",
+        WebkitTransform: "scale(1)",
+        transform: "scale(1)"
+      }
     }
   })
 };
@@ -66,15 +94,21 @@ function ProductItem(props) {
       );
     default:
       return (
-        <div data-cy="card" {...styles.card}>
-          <img src={props.data.photo} alt={props.data.name} />
-          <ProductInfo
-            name={props.data.name}
-            id={props.data.product_id}
-            price={props.data.price}
-            buy={props.buy}
-          />
-        </div>
+        <a
+          href={"/" + props.data.product_id}
+          data-cy={props.data.product_id}
+          {...styles.link}
+        >
+          <div data-cy="card" {...styles.card}>
+            <img src={props.data.photo} alt={props.data.name} />
+            <ProductInfo
+              name={props.data.name}
+              id={props.data.product_id}
+              price={props.data.price}
+              buy={props.buy}
+            />
+          </div>
+        </a>
       );
   }
 }
