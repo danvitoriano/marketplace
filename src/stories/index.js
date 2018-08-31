@@ -23,7 +23,12 @@ const data = {
   price: "848.00",
   amount: "84800",
   tid: 4198520,
-  label: "Transaction ID"
+  label: "Transaction ID",
+  status: "refused",
+  status_reason: "antifraud",
+  refuse_reason: "antifraud",
+  acquirer_name: "fintech",
+  authorization_code: "123456"
 };
 
 storiesOf("Button", module).add("with text clicked", () => (
@@ -87,7 +92,16 @@ storiesOf("Error", module).add("route not found", () => <Error />);
 
 storiesOf("Transaction", module).add("show transaction receipt", () => (
   <Transaction
-    transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+    transaction={{
+      tid: data.tid,
+      amount: data.amount,
+      items: [data],
+      status: data.status,
+      status_reason: data.status_reason,
+      refuse_reason: data.refuse_reason,
+      acquirer_name: data.acquirer_name,
+      authorization_code: data.authorization_code
+    }}
   />
 ));
 
@@ -96,7 +110,16 @@ storiesOf("ModalContainer", module).add("open a modal render", () => (
     show={{ tid: data.tid, amount: data.amount, items: [data] }}
     render={
       <Transaction
-        transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
+        transaction={{
+          tid: data.tid,
+          amount: data.amount,
+          items: [data],
+          status: data.status,
+          status_reason: data.status_reason,
+          refuse_reason: data.refuse_reason,
+          acquirer_name: data.acquirer_name,
+          authorization_code: data.authorization_code
+        }}
       />
     }
   />
