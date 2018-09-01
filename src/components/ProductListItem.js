@@ -106,10 +106,10 @@ class ProductListContainer extends React.Component {
       .then(client =>
         client.transactions.create({
           amount: parseInt(this.state.data.price * 100, 10),
-          card_number: "4610464128243302",
-          card_holder_name: "abc",
-          card_expiration_date: "1120",
-          card_cvv: "373",
+          card_number: "4111111111111111",
+          card_holder_name: "Morpheus Fishburne",
+          card_expiration_date: "0922",
+          card_cvv: "123",
           customer: {
             external_id: "#123456789",
             name: "João das Neves",
@@ -119,7 +119,7 @@ class ProductListContainer extends React.Component {
             documents: [
               {
                 type: "cpf",
-                number: "00000000000"
+                number: "66666666666"
               }
             ],
             phone_numbers: ["+5511999999999", "+5511888888888"],
@@ -194,7 +194,7 @@ class ProductListContainer extends React.Component {
     pagarme.client // paybables transaction return object
       .connect({ api_key: api_key_pagarme })
       .then(client => client.payables.find({ transactionId: tid }))
-      .then(payables => this.setState({ payables }));
+      .then(payables => this.setState({ payables: payables }));
   }
 
   handleErrors(response) {
@@ -219,7 +219,7 @@ class ProductListContainer extends React.Component {
   }
 
   render() {
-    if (this.state.response !== "") {
+    if (this.state.response !== "" && this.state.payables !== []) {
       return (
         <div>
           <Header backButton />

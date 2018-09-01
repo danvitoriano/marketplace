@@ -10,21 +10,18 @@ const marginRight = {
 };
 
 function Transaction(props) {
+  var payables = props.payables;
   return (
     <div data-cy="transaction">
       <div style={marginRight}>
         <TransactionInfo label="Transaction ID" value={props.transaction.tid} />
       </div>
       <div style={inlines}>
+        <TransactionInfo
+          label="Item"
+          value={props.transaction.items[0].title}
+        />
         <TransactionInfo label="status" value={props.transaction.status} />
-        <TransactionInfo
-          label="status_reason"
-          value={props.transaction.status_reason}
-        />
-        <TransactionInfo
-          label="refuse_reason"
-          value={props.transaction.refuse_reason}
-        />
         <TransactionInfo
           label="acquirer_name"
           value={props.transaction.acquirer_name}
@@ -35,10 +32,6 @@ function Transaction(props) {
         />
       </div>
       <div style={inlines}>
-        <TransactionInfo
-          label="Item"
-          value={props.transaction.items[0].title}
-        />
         <TransactionInfo
           label="Total Transação"
           value={(props.transaction.amount * 0.01).toFixed(2)}
@@ -57,7 +50,20 @@ function Transaction(props) {
         />
       </div>
       <div style={marginRight}>
-        <TransactionInfo label="Payables" value={props.payables} />
+        {props.payables
+          ? payables.map(item => (
+              <TransactionInfo
+                key={item.id}
+                label={`${"Payables " + item.id}`}
+                value={`${"Status: " +
+                  item.status +
+                  " | Amount: " +
+                  item.amount +
+                  " | Fee: " +
+                  item.fee}`}
+              />
+            ))
+          : null}
       </div>
     </div>
   );

@@ -35,5 +35,5 @@ test("should display TransactionInfo", () => {
       transaction={{ tid: data.tid, amount: data.amount, items: [data] }}
     />
   );
-  expect(wrapper.find(TransactionInfo).length).toBe(12);
+  expect(wrapper.find(TransactionInfo).length).toBe(9);
 });
