@@ -5,12 +5,13 @@ const styles = {
   container: css({
     fontFamily: "Raleway",
     margin: 10,
-    "> div": {
+    "> div:first-child": {
       backgroundColor: "yellowgreen",
       color: "white",
       fontWeight: 300,
-      padding: "5px 0",
-      textIndent: 10
+      padding: "5px 10px",
+      textIndent: 10,
+      display: "inline-block"
     }
   })
 };
@@ -19,7 +20,7 @@ function TransactionInfo(props) {
   return (
     <div {...styles.container}>
       <div>{props.label}: </div>
-      {props.value}
+      <div>{props.value}</div>
     </div>
   );
 }
